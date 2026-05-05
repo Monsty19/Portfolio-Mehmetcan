@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mehmetcan Ari — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#0a0a08;
+  --paper:#f2ede6;
+  --cream:#ede8e0;
+  --sand:#d6cfbf;
+  --muted:#7a7468;
+  --accent:#c94a2b;
+  --accent2:#2b5fc9;
+  --line:rgba(10,10,8,.12);
+  --r:4px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'DM Sans',system-ui,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+  cursor:none;
+}
+/* custom cursor */
+.cursor{position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:multiply}
+.cursor-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+.cursor-ring{width:36px;height:36px;border:1.5px solid var(--ink);border-radius:50%;position:fixed;transform:translate(-50%,-50%);transition:transform .12s ease,width .2s,height .2s;opacity:.5}
+body:hover .cursor-dot{opacity:1}
+a,button,.btn{cursor:none}
+
+/* noise overlay */
+body::after{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.038;
+  pointer-events:none;
+  z-index:1000;
+}
+
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.container{width:min(1200px,calc(100% - 48px));margin:0 auto}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:0;
+  mix-blend-mode:normal;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+  border-bottom:1px solid var(--line);
+  background:rgba(242,237,230,.88);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  padding:0 40px;
+}
+.brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.nav{display:flex;align-items:center;gap:0;list-style:none}
+.nav a{
+  font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);padding:8px 14px;border-radius:2px;
+  transition:color .2s,background .2s;
+}
+.nav a:hover,.nav a.active{color:var(--ink);background:rgba(10,10,8,.06)}
+
+/* ── MAIN ── */
+main{padding-top:72px}
+
+/* ── HERO ── */
+.hero{
+  min-height:calc(100vh - 72px);
+  display:grid;
+  grid-template-columns:1fr 480px;
+  position:relative;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-left{
+  padding:80px 64px 80px 64px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;
+  border-right:1px solid var(--line);
+}
+.hero-label{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:10px;margin-bottom:48px;
+}
+.hero-label::before{content:"";width:28px;height:1px;background:var(--accent)}
+.hero-label .dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--accent);margin-left:6px;
+  animation:blink 1.8s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(96px,13vw,196px);
+  line-height:.88;
+  letter-spacing:-.01em;
+  color:var(--ink);
+  margin-bottom:0;
+}
+h1 .line2{
+  -webkit-text-stroke:2px var(--ink);
+  color:transparent;
+  display:block;
+}
+h1 .line3{
+  color:var(--accent);
+  display:block;
+  font-size:clamp(56px,7.5vw,116px);
+}
+.hero-sub{
+  margin-top:40px;
+  font-size:18px;font-weight:300;color:var(--muted);
+  max-width:480px;line-height:1.7;
+}
+.hero-sub strong{color:var(--ink);font-weight:500}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:2px;
+  font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--ink);
+  transition:background .2s,color .2s,transform .18s;
+  background:transparent;color:var(--ink);
+}
+.btn:hover{background:var(--ink);color:var(--paper);transform:translate(-2px,-2px)}
+.btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.stack span{
+  font-family:'DM Mono',monospace;font-size:11px;
+  border:1px solid var(--sand);padding:5px 10px;
+  border-radius:2px;color:var(--muted);
+  transition:border-color .2s,color .2s;
+}
+.stack span:hover{border-color:var(--accent);color:var(--accent)}
+
+.hero-right{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:48px 48px 48px 48px;
+  position:relative;background:var(--cream);
+}
+.big-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(160px,20vw,280px);
+  line-height:1;color:var(--sand);
+  position:absolute;top:-20px;right:-10px;
+  user-select:none;pointer-events:none;
+  letter-spacing:-.02em;
+}
+.profile-card{position:relative;z-index:2}
+.profile-card h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:36px;letter-spacing:.05em;margin-bottom:28px;
+  color:var(--ink);
+}
+.profile-list{display:grid;gap:0}
+.profile-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  border-top:1px solid var(--line);padding:12px 0;
+}
+.profile-row span{color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.profile-row strong{font-size:14px;font-weight:400;text-align:right}
+.hero-index{
+  position:absolute;top:48px;left:48px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;
+  color:var(--muted);text-transform:uppercase;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  opacity:.5;
+}
+
+/* ── SECTION GENERIC ── */
+section{scroll-margin-top:72px}
+.section-header{
+  display:flex;align-items:baseline;gap:24px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:20px;margin-bottom:48px;
+}
+.section-num{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--muted);text-transform:uppercase;
+}
+.section-title-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(48px,6vw,80px);
+  letter-spacing:.02em;color:var(--ink);
+  line-height:1;
+}
+
+/* ── ABOUT ── */
+.about-wrap{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:80px;
+  padding:80px 0;
+  border-bottom:1px solid var(--line);
+}
+.about-text p{
+  font-size:20px;font-weight:300;color:var(--muted);
+  line-height:1.75;margin-bottom:20px;max-width:560px;
+}
+.about-text p strong{color:var(--ink);font-weight:500}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.info{background:var(--paper);padding:20px;transition:background .2s}
+.info:hover{background:var(--cream)}
+.info small{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.info strong{font-size:15px;font-weight:400}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:1px}
+.stat{background:var(--paper);padding:28px 20px;text-align:left;transition:background .2s}
+.stat:hover{background:var(--cream)}
+.stat b{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:56px;display:block;color:var(--ink);line-height:1;
+}
+.stat span{font-size:13px;color:var(--muted);margin-top:4px;display:block}
+
+/* ── SKILLS ── */
+.skills-wrap{padding:80px 0;border-bottom:1px solid var(--line)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:0}
+.skill{
+  background:var(--paper);padding:32px 28px;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.skill:hover{background:var(--cream)}
+.skill-num{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;
+  color:var(--muted);margin-bottom:20px;display:block;
+}
+.skill h3{font-size:22px;font-weight:400;margin-bottom:8px;letter-spacing:-.01em}
+.skill p{color:var(--muted);font-size:14px;line-height:1.6}
+.bar{height:3px;background:var(--sand);margin-top:24px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);animation:barFill 1.2s cubic-bezier(.4,0,.2,1) both}
+@keyframes barFill{from{width:0}}
+.skill-big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:80px;color:var(--sand);
+  position:absolute;bottom:-10px;right:10px;
+  line-height:1;pointer-events:none;user-select:none;
+  transition:color .2s;
+}
+.skill:hover .skill-big{color:var(--accent);opacity:.15}
+
+/* ── PROJECTS ── */
+.projects-wrap{padding:80px 0;border-bottom:1px solid var(--line)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.project{
+  background:var(--paper);
+  transition:background .2s,transform .25s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+  padding:0;
+}
+.project:hover{background:var(--cream);transform:translateY(-4px)}
+.project-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:120px;color:var(--cream);
+  line-height:1;padding:32px 28px 0;
+  display:block;
+  transition:color .25s;
+}
+.project:hover .project-num{color:var(--sand)}
+.project-body{padding:0 28px 32px}
+.project-body h3{font-size:22px;font-weight:400;margin-bottom:10px;letter-spacing:-.01em}
+.project-body p{font-size:14px;color:var(--muted);margin-bottom:18px;line-height:1.65}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--sand);padding:4px 8px;border-radius:2px;
+  transition:border-color .2s,color .2s;
+}
+.project:hover .tags span{border-color:var(--accent);color:var(--accent)}
+
+/* ── TIMELINE ── */
+.timeline-wrap{padding:80px 0;border-bottom:1px solid var(--line)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.time{
+  background:var(--paper);padding:32px 28px;
+  position:relative;
+  transition:background .2s;
+}
+.time:hover{background:var(--cream)}
+.time::before{
+  content:"";
+  position:absolute;top:0;left:28px;right:28px;
+  height:3px;background:var(--sand);
+  transition:background .2s;
+}
+.time:hover::before{background:var(--accent2)}
+.time small{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block;
+}
+.time h3{font-size:18px;font-weight:400;margin-bottom:8px}
+.time p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── CERTS ── */
+.certs-wrap{padding:80px 0;border-bottom:1px solid var(--line)}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.cert{
+  background:var(--paper);padding:28px;
+  transition:background .2s;
+  display:block;color:inherit;
+  position:relative;
+}
+.cert:hover{background:var(--cream)}
+.cert-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.cert-icon{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;
+  width:44px;height:44px;border-radius:2px;
+  display:grid;place-items:center;
+  background:var(--ink);color:var(--paper);
+  transition:background .2s;
+}
+.cert:hover .cert-icon{background:var(--accent)}
+.cert-time{
+  font-family:'DM Mono',monospace;font-size:24px;font-weight:400;
+  color:var(--sand);
+}
+.cert h3{font-size:18px;font-weight:400;margin-bottom:6px}
+.cert p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* Indicateur de lien externe sur les certifs */
+.cert-link-hint {
+  position:absolute;
+  bottom:16px;right:20px;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--sand);
+  opacity:0;
+  transform:translateY(4px);
+  transition:opacity .2s,transform .2s,color .2s;
+}
+.cert:hover .cert-link-hint {
+  opacity:1;
+  transform:translateY(0);
+  color:var(--accent);
+}
+
+/* ── CONTACT ── */
+.contact-wrap{
+  display:grid;grid-template-columns:.9fr 1.1fr;
+  padding:80px 0 120px;
+  gap:80px;
+}
+.contact-info h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(48px,6vw,80px);
+  letter-spacing:.02em;line-height:1;
+  margin-bottom:40px;
+}
+.contact-info h2 em{font-style:normal;color:var(--accent)}
+.contact-list{display:grid;gap:0}
+.contact-item{
+  display:flex;gap:16px;align-items:flex-start;
+  border-top:1px solid var(--line);padding:16px 0;
+  transition:padding-left .2s;
+}
+.contact-item:hover{padding-left:8px}
+.contact-icon{
+  width:40px;height:40px;border-radius:2px;
+  background:var(--cream);display:grid;place-items:center;
+  font-size:18px;flex-shrink:0;
+}
+.contact-item strong{font-size:15px;font-weight:400;display:block}
+.contact-item small{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-top:2px;display:block}
+.form-wrap{padding-top:8px}
+form{display:grid;gap:0}
+.form-row{position:relative;border-top:1px solid var(--line)}
+.form-row:last-of-type{border-bottom:1px solid var(--line)}
+input,textarea{
+  width:100%;background:transparent;border:none;
+  color:var(--ink);padding:18px 0;
+  outline:none;font-size:16px;font-weight:300;
+  transition:padding-left .2s;
+}
+input:focus,textarea:focus{padding-left:8px}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+textarea{min-height:120px;resize:vertical}
+.form-submit{margin-top:24px}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--line);
+  padding:28px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--ink)}
+.footer-copy{font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.1em}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1050px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{display:none}
+  .about-wrap{grid-template-columns:1fr;gap:40px}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .projects{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  .certs{grid-template-columns:repeat(2,1fr)}
+  .contact-wrap{grid-template-columns:1fr;gap:48px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  .hero-left{padding:48px 24px}
+  .container{width:min(100% - 32px,1200px)}
+  .nav-inner{padding:0 20px}
+  .skills{grid-template-columns:1fr}
+  .projects{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr}
+  .certs{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+
+/* ── DOCUMENTS ── */
+.docs-wrap{padding:80px 0;border-bottom:1px solid var(--line)}
+.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.doc-card{
+  background:var(--paper);padding:40px 32px 32px;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+  display:flex;flex-direction:column;min-height:300px;
+}
+.doc-card:hover{background:var(--cream)}
+.doc-card::before{
+  content:"";position:absolute;top:0;left:32px;right:32px;
+  height:3px;background:var(--sand);transition:background .25s;
+}
+.doc-card:hover::before{background:var(--accent)}
+.doc-card.empty::before{display:none}
+.doc-card.empty{background:var(--cream);opacity:.6}
+.doc-icon{
+  width:56px;height:56px;border-radius:2px;
+  background:var(--ink);color:var(--paper);
+  display:grid;place-items:center;
+  font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.05em;
+  margin-bottom:28px;transition:background .2s;
+}
+.doc-card:hover .doc-icon{background:var(--accent)}
+.doc-card.empty .doc-icon{background:var(--sand)}
+.doc-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;display:block}
+.doc-card h3{font-size:22px;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
+.doc-card p{font-size:14px;color:var(--muted);line-height:1.65;flex:1}
+.doc-footer{
+  margin-top:28px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.doc-meta{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.doc-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 16px;border-radius:2px;
+  border:1px solid var(--ink);color:var(--ink);background:transparent;
+  transition:background .2s,color .2s,transform .18s;text-decoration:none;
+}
+.doc-btn:hover{background:var(--ink);color:var(--paper);transform:translate(-2px,-2px)}
+.doc-btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.doc-btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.doc-big{
+  font-family:'Bebas Neue',sans-serif;font-size:100px;color:var(--cream);
+  position:absolute;bottom:-14px;right:8px;
+  line-height:1;pointer-events:none;user-select:none;transition:color .2s;
+}
+.doc-card:hover .doc-big{color:var(--sand)}
+@media(max-width:1050px){.docs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.docs-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="nav-inner">
+    <a href="#accueil" class="brand">Ari.</a>
+    <nav>
+      <ul class="nav">
+        <li><a href="#accueil" class="active">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#documents">Documents</a></li>
+        <li><a href="#veille">Veille</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-left">
+    <div class="hero-label">
+      Disponible pour alternance
+      <span class="dot"></span>
+    </div>
+    <h1>
+      <span class="line2">Mehmetcan</span><span class="line3">Ari.</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Étudiant BTS SIO SLAM</strong> — Je développe des expériences web utiles, de l'architecture front-end jusqu'au back-end. Je cherche une alternance d'un an pour ma future licence.
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#projets">Voir mes projets</a>
+      <a class="btn" href="#contact">Me contacter</a>
+    </div>
+    <div class="stack">
+      <span>Android</span><span>Symfony</span><span>Angular</span><span>HTML/CSS</span><span>Docker</span><span>API REST</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-index">Mehmetcan Ari — Portfolio 2025</div>
+    <div class="big-num">01</div>
+    <div class="profile-card">
+      <h2>Profil Rapide</h2>
+      <div class="profile-list">
+        <div class="profile-row"><span>Formation</span><strong>BTS SIO SLAM</strong></div>
+        <div class="profile-row"><span>École</span><strong>ESUPEC Cholet</strong></div>
+        <div class="profile-row"><span>Objectif</span><strong>Alternance licence dev</strong></div>
+        <div class="profile-row"><span>Qualités</span><strong>Autonome · Créatif · Organisé</strong></div>
+        <div class="profile-row"><span>Mobilité</span><strong>Permis B</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-wrap reveal">
+      <div class="about-text">
+        <div class="section-header">
+          <span class="section-num">01 / 06</span>
+          <h2 class="section-title-big">À propos</h2>
+        </div>
+        <p>Je suis étudiant en <strong>BTS SIO option SLAM</strong> à l'ESUPEC Lycée Sainte-Marie de Cholet.</p>
+        <p>Adaptable, autonome et créatif — mes expériences m'ont permis de toucher à des <strong>sites vitrines</strong>, des <strong>applications web full-stack</strong> et des projets exploitant des <strong>API REST</strong>.</p>
+      </div>
+      <div>
+        <div class="info-grid">
+          <div class="info"><small>Localisation</small><strong>Cholet, 49300</strong></div>
+          <div class="info"><small>Mobilité</small><strong>Permis B</strong></div>
+          <div class="info"><small>Français</small><strong>C2</strong></div>
+          <div class="info"><small>Anglais</small><strong>B2</strong></div>
+          <div class="info"><small>Turc</small><strong>B1</strong></div>
+          <div class="info"><small>Centres d'intérêt</small><strong>Musculation · Vélo</strong></div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><b>9</b><span>Certifications techniques</span></div>
+          <div class="stat"><b>2</b><span>Expériences professionnelles</span></div>
+          <div class="stat"><b>8+</b><span>Technologies travaillées</span></div>
+          <div class="stat"><b>1 an</b><span>Alternance recherchée</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="competences">
+  <div class="container">
+    <div class="skills-wrap reveal">
+      <div class="section-header">
+        <span class="section-num">02 / 06</span>
+        <h2 class="section-title-big">Compétences</h2>
+      </div>
+      <div class="skills">
+        <div class="skill">
+          <span class="skill-num">— 01</span>
+          <h3>Développement web</h3>
+          <p>HTML/CSS, JavaScript, Angular</p>
+          <div class="bar"><i style="width:86%;animation-delay:.1s"></i></div>
+          <span class="skill-big">86</span>
+        </div>
+        <div class="skill">
+          <span class="skill-num">— 02</span>
+          <h3>Back-end</h3>
+          <p>Symfony, PHP, Java, API REST</p>
+          <div class="bar"><i style="width:80%;animation-delay:.2s"></i></div>
+          <span class="skill-big">80</span>
+        </div>
+        <div class="skill">
+          <span class="skill-num">— 03</span>
+          <h3>Base de données</h3>
+          <p>SQL, SGBD, requêtes</p>
+          <div class="bar"><i style="width:78%;animation-delay:.3s"></i></div>
+          <span class="skill-big">78</span>
+        </div>
+        <div class="skill">
+          <span class="skill-num">— 04</span>
+          <h3>Outils & méthodes</h3>
+          <p>Docker, IA, bureautique, Agile</p>
+          <div class="bar"><i style="width:76%;animation-delay:.4s"></i></div>
+          <span class="skill-big">76</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projets">
+  <div class="container">
+    <div class="projects-wrap reveal">
+      <div class="section-header">
+        <span class="section-num">03 / 06</span>
+        <h2 class="section-title-big">Projets & expériences</h2>
+      </div>
+      <div class="projects">
+        <article class="project">
+          <span class="project-num">01</span>
+          <div class="project-body">
+            <h3>POC e-commerce</h3>
+            <p>Développement d'un POC d'application web e-commerce en Angular et Symfony avec architecture front-end / back-end communiquant via API REST sécurisée JWT.</p>
+            <div class="tags"><span>Angular</span><span>Symfony</span><span>API REST</span><span>JWT</span></div>
+          </div>
+        </article>
+        <article class="project">
+          <span class="project-num">02</span>
+          <div class="project-body">
+            <h3>Site vitrine MoussBarber 49</h3>
+            <p>Réalisation complète d'un site vitrine responsive, participation aux réunions avec le gérant, adaptation du design et respect des délais.</p>
+            <div class="tags"><span>HTML/CSS</span><span>Responsive</span><span>UX/UI</span></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="project-num">03</span>
+          <div class="project-body">
+            <h3>Projet AP4 — Sigeansud</h3>
+            <p>Participation au projet de gestion d'un parc animalier : interfaces web/mobile, API REST et données centralisées.</p>
+            <div class="tags"><span>Symfony</span><span>Android</span><span>MySQL</span><span>API</span></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="project-num">04</span>
+          <div class="project-body">
+            <h3>Projet AP3 — Hippique</h3>
+            <p>Réalisation d’un site permettant la gestion de courses hippiques : interfaces web/mobile, API REST / MVC.</p>
+            <div class="tags"><span>PHP</span><span>Android</span><span>MySQL</span><span>API</span></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="project-num">06</span>
+          <div class="project-body">
+            <h3>Projet AP2 — Tellis</h3>
+            <p>Réalisation d’un site permettant la reservation d'emplacement pour les entreprises : interfaces web.</p>
+            <div class="tags"><span>PHP</span><span>HTML/CSS</span><span>JavaScript</span></div>
+          </div>
+        </article>
+
+        <article class="project">
+          <span class="project-num">07</span>
+          <div class="project-body">
+            <h3>Projet AP1 — OXAM</h3>
+            <p>Conception et mise en place d’une infrastructure réseau comprenant plusieurs services</p>
+            <div class="tags"><span>Packet Tracer</span><span>Windows Server 2019</span><span>GPO</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="container">
+    <div class="timeline-wrap reveal">
+      <div class="section-header">
+        <span class="section-num">04 / 06</span>
+        <h2 class="section-title-big">Parcours</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="time">
+          <small>2024 — 2026</small>
+          <h3>BTS SIO SLAM</h3>
+          <p>ESUPEC Lycée Sainte-Marie, Cholet — développement logiciel.</p>
+        </div>
+
+        <div class="time">
+          <small>Janv. — Fév. 2026</small>
+          <h3>Bakertilly Digitale</h3>
+          <p>Stage développeur web full-stack, Angular, Symfony, API REST JWT.</p>
+        </div>
+
+        <div class="time">
+          <small>Mai — Juin 2025</small>
+          <h3>MoussBarber 49</h3>
+          <p>Stage web : SiteWeb Barber.</p>
+          <a class="doc-btn primary" href="https://www.moussbarber49.fr/" target="_blank" rel="noopener noreferrer">↓ Voir</a>
+        </div>
+
+        <div class="time">
+          <small>2023 — 2024</small>
+          <h3>Baccalauréat Général</h3>
+          <p>Spécialités SES / HGGSP — Lycée Europe Robert Schuman, Cholet.</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="certs-wrap reveal">
+      <div class="section-header">
+        <span class="section-num">05 / 06</span>
+        <h2 class="section-title-big">Certifications</h2>
+      </div>
+      <div class="certs">
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/8204091-utilisez-chatgpt-pour-ameliorer-votre-productivite" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">AI</div><div class="cert-time">—</div></div>
+          <h3>ChatGPT</h3>
+          <p>Essentielle dans le domaine du numérique et pour améliorer la productivité.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">PHP</div><div class="cert-time">8h</div></div>
+          <h3>PHP</h3>
+          <p>Approfondir PHP afin de l'utiliser efficacement dans les PPE.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/7168871-apprenez-les-bases-du-langage-python" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">PY</div><div class="cert-time">12h</div></div>
+          <h3>Python</h3>
+          <p>Apprendre et renforcer les connaissances pour le CCF.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">JS</div><div class="cert-time">12h</div></div>
+          <h3>JavaScript</h3>
+          <p>Formulaires, interactions web et manipulation des données.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/7818671-requetez-une-base-de-donnees-avec-sql" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">SQL</div><div class="cert-time">12h</div></div>
+          <h3>SQL / BDD</h3>
+          <p>Renforcer les connaissances en bases de données.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/8264046-construisez-un-site-web-a-l-aide-du-framework-symfony-7" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">SF</div><div class="cert-time">12h</div></div>
+          <h3>Symfony</h3>
+          <p>Préparation à l'entrée en entreprise et au développement back-end.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">MVC</div><div class="cert-time">8h</div></div>
+          <h3>MVC</h3>
+          <p>Renforcer et consolider les compétences vues en classe.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/7471261-debutez-avec-angular" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">NG</div><div class="cert-time">12h</div></div>
+          <h3>Angular</h3>
+          <p>Bases du framework, composants, routing et services.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+        <a class="cert" href="https://openclassrooms.com/fr/courses/7162856-gerez-du-code-avec-git-et-github" target="_blank" rel="noopener noreferrer">
+          <div class="cert-head"><div class="cert-icon">GIT</div><div class="cert-time">6h</div></div>
+          <h3>GitHub</h3>
+          <p>Gestion de version utile pour les travaux de groupe et l'entreprise.</p>
+          <span class="cert-link-hint">↗ Voir le cours</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="container">
+    <div class="docs-wrap reveal">
+      <div class="section-header">
+        <span class="section-num">06 / 07</span>
+        <h2 class="section-title-big">Documents</h2>
+      </div>
+      <div class="docs-grid">
+
+        <!-- CV -->
+        <div class="doc-card">
+          <div class="doc-icon">CV</div>
+          <span class="doc-num">— 01</span>
+          <h3>Curriculum Vitæ</h3>
+          <p>Mon CV complet : formations, expériences professionnelles, compétences techniques et certifications.</p>
+          <div class="doc-footer">
+            <span class="doc-meta">PDF · 1 page</span>
+            <a class="doc-btn primary" href="docs/cv-mehmetcan-ari.pdf" download>↓ Voir</a>
+          </div>
+          <span class="doc-big"></span>
+        </div>
+
+        <!-- Grille de compétences -->
+        <div class="doc-card">
+          <div class="doc-icon">GC</div>
+          <span class="doc-num">— 02</span>
+          <h3>Grille de compétences</h3>
+          <p>Tableau récapitulatif de mes compétences BTS SIO SLAM : niveaux atteints, preuves et éléments de contexte.</p>
+          <div class="doc-footer">
+            <span class="doc-meta">PDF · BTS SIO</span>
+            <a class="doc-btn" href="docs/grille-competences.pdf" download>↓ Voir</a>
+          </div>
+          <span class="doc-big"></span>
+        </div>
+
+        <!-- Slot libre -->
+        <div class="doc-card empty">
+          <div class="doc-icon">+</div>
+          <span class="doc-num">— 03</span>
+          <h3>Autre document</h3>
+          <p style="color:var(--muted);font-size:14px;line-height:1.65">Bientôt disponible.</p>
+          <div class="doc-footer">
+            <span class="doc-meta">—</span>
+          </div>
+          <span class="doc-big">+</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- VEILLE -->
+<section id="veille">
+  <div class="container">
+    <div class="skills-wrap reveal">
+      
+      <div class="section-header">
+        <span class="section-num">07 / 07</span>
+        <h2 class="section-title-big">Veille technologique</h2>
+      </div>
+
+      <div class="skill">
+        <span class="skill-num">— API MCP</span>
+        <h3>Model Context Protocol (MCP)</h3>
+        <p>
+          Veille technologique sur les API MCP : standard permettant aux IA et outils de communiquer avec des sources externes (API, bases de données, outils).
+          Étude de son fonctionnement, cas d’usage et intégration dans des systèmes modernes.
+        </p>
+        <div class="bar"><i style="width:75%"></i></div>
+        <span class="skill-big">MCP</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <div class="section-header">
+          <span class="section-num">06 / 06</span>
+          <h2 class="section-title-big">Contact</h2>
+        </div>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,5vw,64px);line-height:1.05;letter-spacing:.02em;margin-bottom:40px;margin-top:-12px">
+          Travaillons<br><em style="color:var(--accent);font-style:normal">ensemble.</em>
+        </h2>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div><strong>Email</strong><small>mehmetcanari001@gmail.com</small></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">☎</div>
+            <div><strong>Téléphone</strong><small>+07 66 15 36 52</small></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⌖</div>
+            <div><strong>Adresse</strong><small>10 rue des lauriers, 49300</small></div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="form-wrap">
+        <form onsubmit="sendMail(event)">
+          <div class="form-row"><input id="name" type="text" placeholder="Votre nom" required/></div>
+          <div class="form-row"><input id="email" type="email" placeholder="Votre email" required/></div>
+          <div class="form-row"><input id="subject" type="text" placeholder="Sujet"/></div>
+          <div class="form-row"><textarea id="message" placeholder="Votre message" required></textarea></div>
+          <div class="form-submit">
+            <button class="btn primary" type="submit">Envoyer le message →</button>
+          </div>
+        </form>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">MA.</span>
+  <span class="footer-copy">Portfolio Mehmetcan Ari — BTS SIO SLAM · 2025</span>
+</footer>
+
+<script>
+/* Cursor */
+const dot=document.getElementById('cursorDot');
+const ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+function animateRing(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing)}
+animateRing();
+document.querySelectorAll('a,button,.btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';dot.style.width='4px';dot.style.height='4px'});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';dot.style.width='8px';dot.style.height='8px'});
+});
+
+/* Scroll reveal */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=i*40+'ms';obs.observe(el)});
+
+/* Topbar scroll */
+const topbar=document.querySelector('.topbar');
+window.addEventListener('scroll',()=>topbar.classList.toggle('scrolled',scrollY>24),{passive:true});
+
+/* Active nav */
+const navLinks=document.querySelectorAll('.nav a');
+const secs=[...navLinks].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function setActive(){
+  let idx=0;
+  secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<120)idx=i});
+  navLinks.forEach(a=>a.classList.remove('active'));
+  if(navLinks[idx])navLinks[idx].classList.add('active');
+}
+window.addEventListener('scroll',setActive,{passive:true});
+setActive();
+
+/* Mail */
+// function sendMail(e){
+//   e.preventDefault();
+//   const name=document.getElementById('name').value.trim();
+//   const email=document.getElementById('email').value.trim();
+//   const subject=encodeURIComponent(document.getElementById('subject').value.trim()||'Contact portfolio');
+//   const msg=encodeURIComponent(document.getElementById('message').value.trim()+'\n\nNom : '+name+'\nEmail : '+email);
+//   window.location.href=`mailto:mehmetcanari001@gmail.com?subject=${subject}&body=${msg}`;
+// }
+</script>
+</body>
+</html>
