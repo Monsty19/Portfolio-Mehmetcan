@@ -43,30 +43,31 @@
       cursor: none;
     }
 
-   .cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s;
-  z-index: 999999;
-  pointer-events: none;
-}
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s;
+      z-index: 999999;
+      pointer-events: none;
+    }
 
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%);
-  transition: transform .12s ease, width .2s, height .2s;
-  opacity: .5;
-  z-index: 999999;
-  pointer-events: none;
-}
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      transition: transform .12s ease, width .2s, height .2s;
+      opacity: .5;
+      z-index: 999999;
+      pointer-events: none;
+    }
+
     body:hover .cursor-dot {
       opacity: 1
     }
@@ -1430,6 +1431,11 @@
         grid-template-columns: 1fr;
       }
     }
+
+    a.contact-item {
+      text-decoration: none;
+      color: inherit;
+    }
   </style>
 </head>
 
@@ -1871,11 +1877,12 @@
 
         <div class="skill">
           <span class="skill-num">— API MCP</span>
-          <h3>Model Context Protocol (MCP)</h3>
+          <h3>Le protocole MCP dans les API</h3>
           <p>
-            Veille technologique sur les API MCP : standard permettant aux IA et outils de communiquer avec des sources
-            externes (API, bases de données, outils). Étude de son fonctionnement, cas d'usage et intégration dans des
-            systèmes modernes.
+            Veille sur l'intégration du Model Context Protocol (MCP) dans les API modernes. MCP est une couche
+            standardisée qui se pose au-dessus des API REST existantes pour les rendre consommables par les agents IA :
+            découverte dynamique des outils, session persistante, interface unifiée — là où chaque API classique
+            demandait une intégration manuelle spécifique.
           </p>
           <div class="bar"><i style="width:75%"></i></div>
           <span class="skill-big">MCP</span>
@@ -1887,26 +1894,36 @@
           <div class="tool-card">
             <div class="tool-icon-v">GA</div>
             <h4>Google Alertes</h4>
-            <p>Alertes automatiques sur les mots-clés "MCP", "Model Context Protocol", "AI agents" pour recevoir les
-              dernières actualités par email.</p>
+            <p>Alertes automatiques sur "MCP API", "Model Context Protocol REST", "MCP vs API" pour capter les
+              nouveautés dès leur publication.</p>
           </div>
           <div class="tool-card">
             <div class="tool-icon-v">RSS</div>
             <h4>Feedly</h4>
             <p>Agrégateur RSS permettant de suivre des sources spécialisées : blog Anthropic, MarkTechPost,
-              Thoughtworks, Hacker News.</p>
+              Thoughtworks— filtrés sur API & MCP</p>
           </div>
           <div class="tool-card">
             <div class="tool-icon-v">RD</div>
             <h4>Recherche proactive</h4>
             <p>Recherches régulières sur les dernières publications et annonces concernant le MCP.</p>
           </div>
+
           <div class="tool-card">
             <div class="tool-icon-v">WP</div>
             <h4>Wikipedia</h4>
-            <p>Consultation régulière de l'article MCP pour suivre les mises à jour et l'adoption par les grands
-              acteurs.</p>
+            <p>Consultation de l'article MCP pour suivre l'adoption du protocole par les grands acteurs de l'API :
+              OpenAI, Google DeepMind, Microsoft</p>
           </div>
+
+          <div class="tool-card">
+            <div class="tool-icon-v">AI</div>
+            <h4>ChatGPT</h4>
+            <p>Utilisé pour approfondir la compréhension du protocole MCP-API, générer des résumés d'articles techniques
+              et explorer des cas d'usage concrets.</p>
+          </div>
+
+
         </div>
 
         <!-- ARTICLES -->
@@ -1915,31 +1932,31 @@
 
           <div class="article-card">
             <div class="article-meta-v">
-              <span class="article-tag-v">Standard ouvert</span>
-              <span class="article-date-v">Nov. 2024</span>
+              <span class="article-tag-v">Architecture</span>
+              <span class="article-date-v">Mars 2026</span>
             </div>
-            <h4>Introducing the Model Context Protocol</h4>
-            <p>Anthropic présente MCP comme un adaptateur universel pour l'IA, similaire au port USB-C : une interface
-              unique permettant à n'importe quel modèle d'accéder à des outils et données externes.</p>
+            <h4>MCP vs REST : connecter les agents IA à vos API</h4>
+            <p>Les API REST servent les développeurs, MCP sert les agents IA. WorkOS explique comment les deux
+              protocoles se superposent et pourquoi MCP agit comme une couche d'interface au-dessus des API existantes.
+            </p>
             <div class="article-footer-v">
-              <span>Anthropic Blog</span>
-              <a class="doc-btn" href="https://www.anthropic.com/news/model-context-protocol" target="_blank"
-                rel="noopener">↗ Lire</a>
+              <span>WorkOS Blog</span>
+              <a class="doc-btn" href="https://workos.com/blog/mcp-vs-rest" target="_blank" rel="noopener">↗ Lire</a>
             </div>
           </div>
 
           <div class="article-card">
             <div class="article-meta-v">
               <span class="article-tag-v">Adoption</span>
-              <span class="article-date-v">Déc. 2025</span>
+              <span class="article-date-v">Jan. 2026</span>
             </div>
-            <h4>The Model Context Protocol's impact on 2025</h4>
-            <p>Thoughtworks analyse l'essor fulgurant du MCP en un an : adoption par OpenAI, Google DeepMind, et
-              intégration dans des systèmes agentiques — avec un point sur les risques de sécurité.</p>
+            <h4>MCP vs API REST : la mort des intégrations classiques ?</h4>
+            <p>Le serveur MCP agit comme un interprète entre le LLM et les API métier : il traduit une demande en
+              langage naturel en requête SQL ou REST optimisée, sans que l'IA connaisse la structure de l'API cible.</p>
             <div class="article-footer-v">
-              <span>Thoughtworks</span>
+              <span>Adgensee</span>
               <a class="doc-btn"
-                href="https://www.thoughtworks.com/en-us/insights/blog/generative-ai/model-context-protocol-mcp-impact-2025"
+                href="https://www.adgensee.com/blog/innovation-5/mcp-vs-api-pourquoi-le-model-context-protocol-est-la-mort-annoncee-des-integrations-classiques-pour-l-ia-65"
                 target="_blank" rel="noopener">↗ Lire</a>
             </div>
           </div>
@@ -1998,10 +2015,13 @@
             Travaillons<br><em style="color:var(--accent);font-style:normal">ensemble.</em>
           </h2>
           <div class="contact-list">
-            <div class="contact-item">
+            <a class="contact-item" href="mailto:mehmetcanari001@gmail.com">
               <div class="contact-icon">✉</div>
-              <div><strong>Email</strong><small>mehmetcanari001@gmail.com</small></div>
-            </div>
+              <div>
+                <strong>Email</strong>
+                <small>mehmetcanari001@gmail.com</small>
+              </div>
+            </a>
             <!-- <div class="form-wrap">
         <form onsubmit="sendMail(event)">
           <div class="form-row"><input id="name" type="text" placeholder="Votre nom" required/></div>
